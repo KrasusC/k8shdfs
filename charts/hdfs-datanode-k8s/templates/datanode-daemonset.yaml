@@ -43,6 +43,9 @@ metadata:
     chart: {{ template "hdfs-k8s.subchart" . }}
     release: {{ .Release.Name }}
 spec:
+  selector:
+    matchLabels:
+      name: {{ template "hdfs-k8s.datanode.name" . }}
   template:
     metadata:
       labels:
