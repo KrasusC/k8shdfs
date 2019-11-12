@@ -48,6 +48,9 @@ metadata:
 spec:
   serviceName: {{ template "hdfs-k8s.journalnode.fullname" . }}
   replicas: {{ .Values.global.journalnodeQuorumSize }}
+  selector:
+    matchLabels:
+      name: {{ template "hdfs-k8s.journalnode.name" . }}
   template:
     metadata:
       labels:
