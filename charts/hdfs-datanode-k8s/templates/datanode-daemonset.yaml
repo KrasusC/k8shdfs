@@ -50,7 +50,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ template "hdfs-k8s.datanode.name" . }}
+        name: {{ template "hdfs-k8s.datanode.name" . }}
         release: {{ .Release.Name }}
       {{- if .Values.podAnnotations }}
       annotations:

@@ -10,7 +10,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: {{ template "hdfs-k8s.client.name" . }}
+      app: {{ template "hdfs-k8s.client.name" . }}
       release: {{ .Release.Name }}
   template:
     metadata:
