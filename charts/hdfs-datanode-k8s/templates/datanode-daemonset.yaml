@@ -46,6 +46,7 @@ spec:
   selector:
     matchLabels:
       name: {{ template "hdfs-k8s.datanode.name" . }}
+      release: {{ .Release.Name }}
   template:
     metadata:
       labels:

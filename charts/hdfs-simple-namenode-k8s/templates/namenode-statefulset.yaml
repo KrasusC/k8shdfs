@@ -25,6 +25,10 @@ metadata:
     chart: {{ template "hdfs-k8s.subchart" . }}
     release: {{ .Release.Name }}
 spec:
+  selector:
+    matchLabels:
+      app: {{ template "hdfs-k8s.namenode.name" . }}
+      release: {{ .Release.Name }}
   serviceName: {{ template "hdfs-k8s.namenode.fullname" . }}
   # Create a size-1 set.
   replicas: 1

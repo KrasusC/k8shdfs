@@ -19,7 +19,7 @@ spec:
     name: http
   clusterIP: None
   selector:
-    app: {{ template "hdfs-k8s.journalnode.name" . }}
+    name: {{ template "hdfs-k8s.journalnode.name" . }}
     release: {{ .Release.Name }}
 ---
 apiVersion: policy/v1beta1
@@ -33,7 +33,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: {{ template "hdfs-k8s.journalnode.name" . }}
+      name: {{ template "hdfs-k8s.journalnode.name" . }}
       release: {{ .Release.Name }}
   minAvailable: {{ div .Values.global.journalnodeQuorumSize 2 | add1 }}
 ---
@@ -50,7 +50,8 @@ spec:
   replicas: {{ .Values.global.journalnodeQuorumSize }}
   selector:
     matchLabels:
-      name: {{ template "hdfs-k8s.journalnode.name" . }}
+      app: {{ template "hdfs-k8s.journalnode.name" . }}
+      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
